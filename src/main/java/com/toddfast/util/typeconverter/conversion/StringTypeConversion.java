@@ -7,10 +7,19 @@ import com.toddfast.util.typeconverter.TypeConverter;
  * it is converted to a string via {@link toString()}.
  *
  */
-public class StringTypeConversion implements TypeConverter.TypeConversion {
+public class StringTypeConversion implements TypeConverter.Conversion {
 
 	@Override
-	public Object convertValue(Object value) {
+	public Object[] getTypeKeys() {
+		return new Object[] {
+			String.class,
+			String.class.getName(),
+			TypeConverter.TYPE_STRING
+		};
+	}
+
+	@Override
+	public Object convert(Object value) {
 		if (value==null) {
 			return null;
 		}

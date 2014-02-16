@@ -6,10 +6,21 @@ import com.toddfast.util.typeconverter.TypeConverter;
  * Convert to an integer by parsing the value as a string
  *
  */
-public class IntegerTypeConversion implements TypeConverter.TypeConversion {
+public class IntegerTypeConversion implements TypeConverter.Conversion {
 
 	@Override
-	public Object convertValue(Object value) {
+	public Object[] getTypeKeys() {
+		return new Object[] {
+			Integer.class,
+			Integer.TYPE,
+			Integer.class.getName(),
+			TypeConverter.TYPE_INT,
+			TypeConverter.TYPE_INTEGER
+		};
+	}
+
+	@Override
+	public Object convert(Object value) {
 		if (value==null) {
 			return null;
 		}

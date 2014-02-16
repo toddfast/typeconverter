@@ -10,9 +10,19 @@ import java.io.ObjectInputStream;
  * value as-is
  *
  */
-public class ObjectTypeConversion implements TypeConverter.TypeConversion {
+public class ObjectTypeConversion implements TypeConverter.Conversion {
 
-	public Object convertValue(Object value) {
+	@Override
+	public Object[] getTypeKeys() {
+		return new Object[] {
+			Object.class,
+			Object.class.getName(),
+			TypeConverter.TYPE_OBJECT
+		};
+	}
+
+	@Override
+	public Object convert(Object value) {
 		if (value==null) {
 			return null;
 		}

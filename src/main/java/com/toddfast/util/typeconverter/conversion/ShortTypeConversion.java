@@ -6,9 +6,20 @@ import com.toddfast.util.typeconverter.TypeConverter;
  * Convert to a short by parsing the value as a string
  *
  */
-public class ShortTypeConversion implements TypeConverter.TypeConversion {
+public class ShortTypeConversion implements TypeConverter.Conversion {
 
-	public Object convertValue(Object value) {
+	@Override
+	public Object[] getTypeKeys() {
+		return new Object[] {
+			Short.class,
+			Short.TYPE,
+			Short.class.getName(),
+			TypeConverter.TYPE_SHORT
+		};
+	}
+
+	@Override
+	public Object convert(Object value) {
 		if (value==null) {
 			return null;
 		}

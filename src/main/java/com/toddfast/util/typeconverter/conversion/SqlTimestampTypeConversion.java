@@ -8,9 +8,19 @@ import com.toddfast.util.typeconverter.TypeConverter;
  *
  * @see	java.sql.Date#valueOf(String)
  */
-public class SqlTimestampTypeConversion implements TypeConverter.TypeConversion {
+public class SqlTimestampTypeConversion implements TypeConverter.Conversion {
 
-	public Object convertValue(Object value) {
+	@Override
+	public Object[] getTypeKeys() {
+		return new Object[] {
+			java.sql.Timestamp.class,
+			java.sql.Timestamp.class.getName(),
+			TypeConverter.TYPE_SQL_TIMESTAMP
+		};
+	}
+
+	@Override
+	public Object convert(Object value) {
 		if (value==null) {
 			return null;
 		}

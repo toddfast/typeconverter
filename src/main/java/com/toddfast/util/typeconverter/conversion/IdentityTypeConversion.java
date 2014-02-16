@@ -6,11 +6,12 @@ import com.toddfast.util.typeconverter.TypeConverter;
  * Returns the value as-is (no conversion)
  *
  */
-public class UnknownTypeConversion implements TypeConverter.Conversion {
+public class IdentityTypeConversion 
+		implements TypeConverter.Conversion<Object> {
 
 	@Override
 	public Object[] getTypeKeys() {
-		return new Object[] { TypeConverter.TYPE_UNKNOWN };
+		return new Object[] {};
 	}
 
 	@Override

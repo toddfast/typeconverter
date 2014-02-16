@@ -6,10 +6,20 @@ import com.toddfast.util.typeconverter.TypeConverter;
  * Convert to a float by parsing the value as a string
  *
  */
-public class FloatTypeConversion implements TypeConverter.TypeConversion {
+public class FloatTypeConversion implements TypeConverter.Conversion {
 
 	@Override
-	public Object convertValue(Object value) {
+	public Object[] getTypeKeys() {
+		return new Object[] {
+			Float.class,
+			Float.TYPE,
+			Float.class.getName(),
+			TypeConverter.TYPE_FLOAT
+		};
+	}
+
+	@Override
+	public Object convert(Object value) {
 		if (value==null) {
 			return null;
 		}

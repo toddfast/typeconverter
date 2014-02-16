@@ -6,9 +6,20 @@ import com.toddfast.util.typeconverter.TypeConverter;
  * Convert to a byte by parsing the value as a string
  *
  */
-public class ByteTypeConversion implements TypeConverter.TypeConversion {
+public class ByteTypeConversion implements TypeConverter.Conversion {
 
-	public Object convertValue(Object value) {
+	@Override
+	public Object[] getTypeKeys() {
+		return new Object[] {
+			Byte.class,
+			Byte.TYPE,
+			Byte.class.getName(),
+			TypeConverter.TYPE_BYTE
+		};
+	}
+
+	@Override
+	public Object convert(Object value) {
 		if (value==null) {
 			return null;
 		}

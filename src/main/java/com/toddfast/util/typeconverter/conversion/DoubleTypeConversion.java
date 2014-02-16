@@ -6,10 +6,20 @@ import com.toddfast.util.typeconverter.TypeConverter;
  * Convert to a double by parsing the value as a string
  *
  */
-public class DoubleTypeConversion implements TypeConverter.TypeConversion {
+public class DoubleTypeConversion implements TypeConverter.Conversion {
 
 	@Override
-	public Object convertValue(Object value) {
+	public Object[] getTypeKeys() {
+		return new Object[] {
+			Double.class,
+			Double.TYPE,
+			Double.class.getName(),
+			TypeConverter.TYPE_DOUBLE
+		};
+	}
+
+	@Override
+	public Object convert(Object value) {
 		if (value==null) {
 			return null;
 		}

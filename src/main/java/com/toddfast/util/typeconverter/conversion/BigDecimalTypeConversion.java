@@ -7,9 +7,18 @@ import java.math.BigDecimal;
  * Convert to a {@link BigDecimal} by parsing the value as a string
  *
  */
-public class BigDecimalTypeConversion implements TypeConverter.TypeConversion {
+public class BigDecimalTypeConversion implements TypeConverter.Conversion {
 
-	public Object convertValue(Object value) {
+	@Override
+	public Object[] getTypeKeys() {
+		return new Object[] {
+			BigDecimal.class,
+			BigDecimal.class.getName(),
+			TypeConverter.TYPE_BIG_DECIMAL
+		};
+	}
+
+	public Object convert(Object value) {
 		if (value==null) {
 			return null;
 		}

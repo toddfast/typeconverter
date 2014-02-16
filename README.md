@@ -4,14 +4,16 @@ Java Type Conversion Done Well
 This lightweight library (*with no dependencies*) provides a versatile, extensible, and robust mechanism for converting a Java object to a different type. For example, you can convert a `String` to an `Integer` using the TypeConverter like this:
 
 ```java
+import com.toddfast.util.convert.TypeConverter;
+
+// Convert
 Integer i = TypeConverter.convert(Integer.class, "123");
-```
 
-or using the shortcut method:
-
-```java
+// Or more simply
 int i = TypeConverter.asInt("123");
 ```
+
+Converting from a string to an integer is hardly noteworthy, but you can use the `TypeConverter` class to convert from any type to any other type just as easily, in exactly the same way.
 
 Why?
 ----

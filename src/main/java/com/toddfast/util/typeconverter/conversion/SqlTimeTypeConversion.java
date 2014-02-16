@@ -1,0 +1,29 @@
+package com.toddfast.util.typeconverter.conversion;
+
+import com.toddfast.util.typeconverter.TypeConverter;
+
+/**
+ * Convert to a {@link SqlTime} by parsing a value as a string of
+ * form <code>hh:mm:ss</code>.
+ *
+ * @see	java.sql.Date#valueOf(String)
+ */
+public class SqlTimeTypeConversion implements TypeConverter.TypeConversion {
+
+	public Object convertValue(Object value) {
+		if (value==null) {
+			return null;
+		}
+		if (!(value instanceof java.sql.Time)) {
+			String v=value.toString();
+			if (v.trim().length()==0) {
+				value=null;
+			}
+			else {
+				// Value must be in the "hh:mm:ss" format
+				value=java.sql.Time.valueOf(v);
+			}
+		}
+		return value;
+	}
+}

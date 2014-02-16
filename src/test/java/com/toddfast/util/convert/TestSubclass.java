@@ -1,8 +1,8 @@
-package com.toddfast.util.typeconverter;
+package com.toddfast.util.convert;
 
-import com.toddfast.util.typeconverter.TypeConverter.ConvertibleType;
-import com.toddfast.util.typeconverter.TypeConverter.Listener;
-import com.toddfast.util.typeconverter.TypeConverter.Conversion;
+import com.toddfast.util.convert.TypeConverter.ConvertibleType;
+import com.toddfast.util.convert.TypeConverter.Listener;
+import com.toddfast.util.convert.TypeConverter.Conversion;
 
 /**
  *

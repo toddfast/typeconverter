@@ -1,6 +1,6 @@
-package com.toddfast.util.typeconverter.conversion;
+package com.toddfast.util.convert.conversion;
 
-import com.toddfast.util.typeconverter.TypeConverter;
+import com.toddfast.util.convert.TypeConverter;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;

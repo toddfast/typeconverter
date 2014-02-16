@@ -1,4 +1,4 @@
-package com.toddfast.util.typeconverter;
+package com.toddfast.util.convert;
 
 import java.math.BigDecimal;
 import org.junit.Test;

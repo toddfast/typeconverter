@@ -1,4 +1,4 @@
-package com.toddfast.util.typeconverter;
+package com.toddfast.util.convert;
 
 /**
  * Potentially returns a different set of

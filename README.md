@@ -133,7 +133,7 @@ foo = TypeConverter.convert(Foo.class, s);
 META-INF/services/com.toddfast.util.typeconverter.TypeConverter$Conversion
 ```
 
-in your project, the contents of which are fully qualified `TypeConverter.Conversion` class names, one per line. See the `ServiceLoader` [documentation](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) for more details on how to use the `META-INF/services` mechanism, or (take a look at how registration of the default conversions is done](https://github.com/toddfast/typeconverter/blob/master/src/main/resources/META-INF/services/com.toddfast.util.convert.TypeConverter%24Conversion).
+in your project, the contents of which are fully qualified `TypeConverter.Conversion` class names, one per line. See the `ServiceLoader` [documentation](http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html) for more details on how to use the `META-INF/services` mechanism, or [take a look at how registration of the default conversions is done](https://github.com/toddfast/typeconverter/blob/master/src/main/resources/META-INF/services/com.toddfast.util.convert.TypeConverter%24Conversion).
 
 
 ### Customizing conversion

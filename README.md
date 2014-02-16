@@ -13,14 +13,25 @@ Integer i = TypeConverter.convert(Integer.class, "123");
 int i = TypeConverter.asInt("123");
 ```
 
-Converting from a string to an integer is hardly noteworthy, but you can use the `TypeConverter` class to convert from any type to any other type just as easily, in exactly the same way.
+Converting from a string to an integer is hardly noteworthy, but you can use the `TypeConverter` class to convert from any type to any other type just as easily, in exactly the same way. For example:
+
+```java
+// Register your custom conversion class
+TypeConverter.registerTypeConversion(new FooConversion());
+
+Bar bar = new Bar();
+Foo foo = TypeConverter.convert(Foo.class, bar);
+// -- or e.g. --
+String s = "bar";
+Foo foo = TypeConverter.convert(Foo.class, s);
+```
 
 Why?
 ----
 
-Type conversion is one of those tedious things that frequently comes up when developing applications, tools, and frameworks. Supporting robust, general type conversion, especially in an extensible way, is often not a priority for a project and so developers limp by with half-baked solutions.
+Type conversion is one of those tedious things that frequently comes up, but supporting robust, general type conversion, especially in an extensible way, is often not a priority for a project. And so developers limp by with half-baked solutions.
 
-Unfortunately, other libraries that provide type conversion in some form or another either don't do a good job, don't make it available as an independent API, or bring along significant bloat.
+Unfortunately, other libraries that provide type conversion in some form or another either don't do it extensibly, don't make it available as an independent API, or bring along significant bloat.
 
 Instead, this tiny library aims to solve this problem once, cleanly (eyes on you, JDK) so you can get on with the more important aspects of your project.
 

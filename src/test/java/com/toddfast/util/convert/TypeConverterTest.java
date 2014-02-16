@@ -131,4 +131,15 @@ public class TypeConverterTest {
 		out=converter.convert(in);
 		assertEquals("1.1",out);
 	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testBogusInteger() {
+		TypeConverter.asInt("bogus");
+	}
+
+	@Test
+	public void testBogusIntegerWithDefaultValue() {
+		int out=TypeConverter.asInt(null,12);
+		assertEquals(12,out);
+	}
 }

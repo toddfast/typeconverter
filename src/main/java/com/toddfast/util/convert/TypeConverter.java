@@ -427,137 +427,224 @@ public class TypeConverter {
 	/**
 	 * Return the value converted to a byte
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
 	public static byte asByte(Object value) {
 		return asByte(value,(byte)0);
 	}
 
 	/**
-	 * Return the value converted to a byte or the default value
+	 * Return the value converted to a byte
+	 * or the specified alternate value if the original value is null. Note,
+	 * this method still throws {@link IllegalArgumentException} if the value
+	 * is not null and could not be converted.
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @param	nullValue
+	 *			The value to be returned if {@link value} is null. Note, this
+	 *			value will not be returned if the conversion fails otherwise.
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
-	public static byte asByte(Object value, byte defaultValue) {
+	public static byte asByte(Object value, byte nullValue) {
 		value=convert(Byte.class,value);
 		if (value!=null) {
 			return ((Byte)value).byteValue();
 		}
 		else {
-			return defaultValue;
+			return nullValue;
 		}
 	}
 
 	/**
 	 * Return the value converted to a short
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
 	public static short asShort(Object value) {
 		return asShort(value,(short)0);
 	}
 
 	/**
-	 * Return the value converted to a short or the default value
+	 * Return the value converted to a short 
+	 * or the specified alternate value if the original value is null. Note,
+	 * this method still throws {@link IllegalArgumentException} if the value
+	 * is not null and could not be converted.
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @param	nullValue
+	 *			The value to be returned if {@link value} is null. Note, this
+	 *			value will not be returned if the conversion fails otherwise.
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
-	public static short asShort(Object value, short defaultValue) {
+	public static short asShort(Object value, short nullValue) {
 		value=convert(Short.class,value);
 		if (value!=null) {
 			return ((Short)value).shortValue();
 		}
 		else {
-			return defaultValue;
+			return nullValue;
 		}
 	}
 
 	/**
 	 * Return the value converted to an int
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
 	public static int asInt(Object value) {
 		return asInt(value,0);
 	}
 
 	/**
-	 * Return the value converted to an int or the default value
+	 * Return the value converted to an int 
+	 * or the specified alternate value if the original value is null. Note,
+	 * this method still throws {@link IllegalArgumentException} if the value
+	 * is not null and could not be converted.
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @param	nullValue
+	 *			The value to be returned if {@link value} is null. Note, this
+	 *			value will not be returned if the conversion fails otherwise.
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
-	public static int asInt(Object value, int defaultValue) {
+	public static int asInt(Object value, int nullValue) {
 		value=convert(Integer.class,value);
 		if (value!=null) {
 			return ((Integer)value).intValue();
 		}
 		else {
-			return defaultValue;
+			return nullValue;
 		}
 	}
 
 	/**
 	 * Return the value converted to a long
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
 	public static long asLong(Object value) {
 		return asLong(value,0L);
 	}
 
 	/**
-	 * Return the value converted to a long or the default value
+	 * Return the value converted to a long 
+	 * or the specified alternate value if the original value is null. Note,
+	 * this method still throws {@link IllegalArgumentException} if the value
+	 * is not null and could not be converted.
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @param	nullValue
+	 *			The value to be returned if {@link value} is null. Note, this
+	 *			value will not be returned if the conversion fails otherwise.
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
-	public static long asLong(Object value, long defaultValue) {
+	public static long asLong(Object value, long nullValue) {
 		value=convert(Long.class,value);
 		if (value!=null) {
 			return ((Long)value).longValue();
 		}
 		else {
-			return defaultValue;
+			return nullValue;
 		}
 	}
 
 	/**
 	 * Return the value converted to a float
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
 	public static float asFloat(Object value) {
 		return asFloat(value,0F);
 	}
 
 	/**
-	 * Return the value converted to a float or the default value
+	 * Return the value converted to a float 
+	 * or the specified alternate value if the original value is null. Note,
+	 * this method still throws {@link IllegalArgumentException} if the value
+	 * is not null and could not be converted.
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @param	nullValue
+	 *			The value to be returned if {@link value} is null. Note, this
+	 *			value will not be returned if the conversion fails otherwise.
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
-	public static float asFloat(Object value, float defaultValue) {
+	public static float asFloat(Object value, float nullValue) {
 		value=convert(Float.class,value);
 		if (value!=null) {
 			return ((Float)value).floatValue();
 		}
 		else {
-			return defaultValue;
+			return nullValue;
 		}
 	}
 
 	/**
 	 * Return the value converted to a double
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
-	public static double asDouble(Object value)
-	{
+	public static double asDouble(Object value) {
 		return asDouble(value,0D);
 	}
 
 	/**
-	 * Return the value converted to a double or the default value
+	 * Return the value converted to a double 
+	 * or the specified alternate value if the original value is null. Note,
+	 * this method still throws {@link IllegalArgumentException} if the value
+	 * is not null and could not be converted.
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @param	nullValue
+	 *			The value to be returned if {@link value} is null. Note, this
+	 *			value will not be returned if the conversion fails otherwise.
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
-	public static double asDouble(Object value, double defaultValue) {
+	public static double asDouble(Object value, double nullValue) {
 		value=convert(Double.class,value);
 		return (value!=null)
 			? ((Double)value).doubleValue()
-			: defaultValue;
+			: nullValue;
 	}
 
 
 	/**
 	 * Return the value converted to a char
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
 	public static char asChar(Object value) {
 		return asChar(value,(char)0);
@@ -565,52 +652,90 @@ public class TypeConverter {
 
 
 	/**
-	 * Return the value converted to a char or the default value
+	 * Return the value converted to a char 
+	 * or the specified alternate value if the original value is null. Note,
+	 * this method still throws {@link IllegalArgumentException} if the value
+	 * is not null and could not be converted.
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @param	nullValue
+	 *			The value to be returned if {@link value} is null. Note, this
+	 *			value will not be returned if the conversion fails otherwise.
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
-	public static char asChar(Object value, char defaultValue) {
+	public static char asChar(Object value, char nullValue) {
 		value=convert(Character.class,value);
 		return (value!=null)
 			? ((Character)value).charValue()
-			: defaultValue;
+			: nullValue;
 	}
 
 	/**
 	 * Return the value converted to a boolean
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
 	public static boolean asBoolean(Object value) {
 		return asBoolean(value,false);
 	}
 
 	/**
-	 * Return the value converted to a boolean or the default value
+	 * Return the value converted to a boolean 
+	 * or the specified alternate value if the original value is null. Note,
+	 * this method still throws {@link IllegalArgumentException} if the value
+	 * is not null and could not be converted.
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @param	nullValue
+	 *			The value to be returned if {@link value} is null. Note, this
+	 *			value will not be returned if the conversion fails otherwise.
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
-	public static boolean asBoolean(Object value, boolean defaultValue) {
+	public static boolean asBoolean(Object value, boolean nullValue) {
 		value=convert(Boolean.class,value);
 		return (value!=null)
 			? ((Boolean)value).booleanValue()
-			: defaultValue;
+			: nullValue;
 	}
 
 	/**
 	 * Return the value converted to a string
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
 	public static String asString(Object value) {
 		return (String)convert(String.class,value);
 	}
 
 	/**
-	 * Return the value converted to a string or the default value
+	 * Return the value converted to a string 
+	 * or the specified alternate value if the original value is null. Note,
+	 * this method still throws {@link IllegalArgumentException} if the value
+	 * is not null and could not be converted.
 	 *
+	 * @param	value
+	 *			The value to be converted
+	 * @param	nullValue
+	 *			The value to be returned if {@link value} is null. Note, this
+	 *			value will not be returned if the conversion fails otherwise.
+	 * @throws	IllegalArgumentException
+	 *			If the value cannot be converted
 	 */
-	public static String asString(Object value, String defaultValue) {
+	public static String asString(Object value, String nullValue) {
 		value=convert(String.class,value);
 		return (value!=null)
 			? (String)value
-			: defaultValue;
+			: nullValue;
 	}
 
 	/**

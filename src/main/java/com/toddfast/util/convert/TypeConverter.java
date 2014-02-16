@@ -51,11 +51,12 @@ import java.util.ServiceLoader;
  * class names, one per line. See the {@link ServiceLoader} documentation for
  * more details on how to use the <code>META-INF/services</code> mechanism.
  * <p>
- * The TypeConverter allows specification of an arbitrary <i>type key</i> in 
- * the {@link #registerTypeConversion} and {@link #convert} methods,
- * so one can simultaneously register a conversion object under a 
- * {@link Class} object, a class name, and a logical type name. For example,
- * the following are valid ways of converting a string to an <code>int</code>:
+ * The {@link TypeConverter} allows specification of an arbitrary
+ * <i>type key</i> in the {@link #registerTypeConversion(Object,TypeConversion)}
+ * and {@link #convert(Object,Object)} methods, so one can simultaneously
+ * register a conversion object under a {@link Class} object, a class name, and
+ * one or more logical type name. For example, the following are valid ways of
+ * converting a string to an <code>int</code>:
  *
  * <pre>
 	Integer i = TypeConverter.convert(Integer.class, "123");
@@ -142,7 +143,7 @@ import java.util.ServiceLoader;
  </pre>
  *
  * Finally, a class can optionally implement the {@link Listener}
- * and/or {@link ConvertibleType} interfaces to receive conversion
+ * and/or {@link Convertible} interfaces to receive conversion
  * events or provide its own {@link Conversion} instance, respectively.
  * This capability allows a class to implement very rich custom type
  * conversion logic.<p>
@@ -152,7 +153,7 @@ import java.util.ServiceLoader;
  * of an object to another type is a potentially expensive operation and should
  * be used with discretion.
  *
- * @see		ConvertibleType
+ * @see		Convertible
  * @see		Conversion
  * @see		Listener
  */
@@ -300,7 +301,7 @@ public class TypeConverter {
 	 *
 	 * Value objects that implement {@link Listener} interface will be notified
 	 * of type conversion via the event methods declared in that interface.
-	 * Value objects that implement {@link ConvertibleType} will be asked for
+	 * Value objects that implement {@link Convertible} will be asked for
 	 * an instance of {@link Conversion} directly, and the returned object
 	 * will be used to convert the type instead of the registered type
 	 * conversion object. These interfaces can be used to customize the type
@@ -339,7 +340,7 @@ public class TypeConverter {
 	 *
 	 * Value objects that implement {@link Listener} interface will be notified
 	 * of type conversion via the event methods declared in that interface.
-	 * Value objects that implement {@link ConvertibleType} will be asked for
+	 * Value objects that implement {@link Convertible} will be asked for
 	 * an instance of {@link Conversion} directly, and the returned object
 	 * will be used to convert the type instead of the registered type
 	 * conversion object. These interfaces can be used to customize the type
@@ -418,8 +419,8 @@ public class TypeConverter {
 		}
 
 		// Find the type conversion object
-		return (value instanceof ConvertibleType)
-			? ((ConvertibleType)value).getTypeConversion(typeKey)
+		return (value instanceof Convertible)
+			? ((Convertible)value).getTypeConversion(typeKey)
 			: typeConversions.get(typeKey);
 	}
 
@@ -640,11 +641,11 @@ public class TypeConverter {
 	 * registered with the {@link TypeConverter} class.
 	 *
 	 */
-	public static interface ConvertibleType {
+	public static interface Convertible {
 
 		/**
 		 * Provides a custom type conversion object used to convert the type
-		 * of this object.
+		 * of this object
 		 * 
 		 * @param	targetTypeKey
 		 *			The target conversion key, normally a class or String.
@@ -666,13 +667,15 @@ public class TypeConverter {
 	public static interface Listener {
 
 		/**
-		 * 
+		 * Called before conversion of a value occurs
 		 *
 		 */
 		public void beforeConversion(Object targetTypeKey);
 
 		/**
-		 * 
+		 * Called immediately after a conversion of a value occurs, providing
+		 * the converted value and giving the listener the opportunity to
+		 * return a different value instead
 		 *
 		 */
 		public Object afterConversion(Object targetTypeKey, 

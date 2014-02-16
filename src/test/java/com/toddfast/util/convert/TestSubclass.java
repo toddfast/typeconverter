@@ -1,6 +1,6 @@
 package com.toddfast.util.convert;
 
-import com.toddfast.util.convert.TypeConverter.ConvertibleType;
+import com.toddfast.util.convert.TypeConverter.Convertible;
 import com.toddfast.util.convert.TypeConverter.Listener;
 import com.toddfast.util.convert.TypeConverter.Conversion;
 
@@ -9,7 +9,7 @@ import com.toddfast.util.convert.TypeConverter.Conversion;
  *
  */
 public class TestSubclass extends TestSuperclass
-		implements Listener, ConvertibleType {
+		implements Listener, Convertible {
 
 	public void beforeConversion(Object targetTypeKey) {
 		System.out.println("--- beforeConversion("+targetTypeKey+")");

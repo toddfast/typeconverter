@@ -1,5 +1,5 @@
-Java Type Conversion Done Well
-==============================
+Java Type Conversion (Done Well)
+================================
 
 This lightweight library (*with no dependencies*) provides a versatile, extensible, and robust mechanism for converting a Java object to a different type. For example, you can convert a `String` to an `Integer` using the TypeConverter like this:
 

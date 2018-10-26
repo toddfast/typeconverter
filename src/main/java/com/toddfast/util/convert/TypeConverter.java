@@ -178,6 +178,17 @@ public class TypeConverter {
 	}
 
 	/**
+	 * Return an immutable copy of the currently registered type conversion
+	 * objects.  The keys for the values in this map may be arbitrary objects, but
+	 * the values are of type <code>Conversion</code>
+	 *
+	 * @return Copy of the registred type conversions
+	 */
+	public static Map<Object,Conversion<?>> getRegisteredTypeConversions() {
+		return Collections.unmodifiableMap(new LinkedHashMap<Object,Conversion<?>>(typeConversions));
+	}
+
+	/**
 	 * Register a type conversion object under the specified key. This
 	 * method can be used by developers to register custom type conversion 
 	 * objects.

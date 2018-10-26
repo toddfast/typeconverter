@@ -200,14 +200,6 @@ public class TypeConverter {
 	}
 
 	/**
-	 * Unregister a type conversion object under the specified key
-	 *
-	 */
-	public static void unregisterTypeConversion(Object key) {
-		typeConversions.remove(key);
-	}
-
-	/**
 	 * Register a type conversion object under the specified keys. This
 	 * method can be used by developers to register custom type conversion
 	 * objects.
@@ -223,6 +215,14 @@ public class TypeConverter {
 		for (int i=0; i<keys.length; i++) {
 			registerTypeConversion(keys[i],conversion);
 		}
+	}
+
+	/**
+	 * Unregister a type conversion object under the specified key
+	 *
+	 */
+	public static void unregisterTypeConversion(Object key) {
+		typeConversions.remove(key);
 	}
 
 	/**

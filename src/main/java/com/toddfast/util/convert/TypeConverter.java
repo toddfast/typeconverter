@@ -178,6 +178,17 @@ public class TypeConverter {
 	}
 
 	/**
+	 * Return an immutable copy of the currently registered type conversion
+	 * objects.  The keys for the values in this map may be arbitrary objects, but
+	 * the values are of type <code>Conversion</code>
+	 *
+	 * @return Copy of the registred type conversions
+	 */
+	public static Map<Object,Conversion<?>> getRegisteredTypeConversions() {
+		return Collections.unmodifiableMap(new LinkedHashMap<Object,Conversion<?>>(typeConversions));
+	}
+
+	/**
 	 * Register a type conversion object under the specified key. This
 	 * method can be used by developers to register custom type conversion 
 	 * objects.
@@ -186,14 +197,6 @@ public class TypeConverter {
 	public static void registerTypeConversion(Object key, 
 			Conversion<?> conversion) {
 		typeConversions.put(key,conversion);
-	}
-
-	/**
-	 * Unregister a type conversion object under the specified key
-	 *
-	 */
-	public static void unregisterTypeConversion(Object key) {
-		typeConversions.remove(key);
 	}
 
 	/**
@@ -215,6 +218,14 @@ public class TypeConverter {
 	}
 
 	/**
+	 * Unregister a type conversion object under the specified key
+	 *
+	 */
+	public static void unregisterTypeConversion(Object key) {
+		typeConversions.remove(key);
+	}
+
+	/**
 	 * Unregister a type conversion object under all keys it specifies via
 	 * the {@link TypeConversion#getTypeKeys} method. Note, if this conversion
 	 * is registered under other type keys, it will NOT be removed from those.
@@ -224,7 +235,7 @@ public class TypeConverter {
 		if (conversion!=null) {
 			Object[] keys=conversion.getTypeKeys();
 			synchronized (typeConversions) {
-				if (keys==null) {
+				if (keys!=null) {
 					for (int i=0; i<keys.length; i++) {
 						unregisterTypeConversion(keys[i]);
 					}
